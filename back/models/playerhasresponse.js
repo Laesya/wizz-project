@@ -5,7 +5,8 @@ module.exports = (sequelize, DataTypes) => {
     responseId: DataTypes.INTEGER
   }, {});
   playerHasResponse.associate = function(models) {
-    // associations can be defined here
+    playerHasResponse.belongsTo(models.Player, {foreignKey: 'playerId'})
+    playerHasResponse.belongsTo(models.Response, {foreignKey: 'responseId'})
   };
   return playerHasResponse;
 };

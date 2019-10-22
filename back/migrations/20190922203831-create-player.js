@@ -29,6 +29,14 @@ module.exports = {
       isAdmin: {
         type: Sequelize.BOOLEAN
       },
+      promotionId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: { 
+          model: 'Promotions',
+          key: 'id'
+        }
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

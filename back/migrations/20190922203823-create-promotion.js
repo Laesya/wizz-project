@@ -9,7 +9,24 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       session: {
-        type: Sequelize.DATEONLY
+        type: Sequelize.DATE,
+        allowNull: false,
+      },
+      schoolId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: { 
+          model: 'Schools',
+          key: 'id'
+        }
+      },
+      technologyid: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: { 
+          model: 'Technologies',
+          key: 'id'
+        }
       },
       createdAt: {
         allowNull: false,

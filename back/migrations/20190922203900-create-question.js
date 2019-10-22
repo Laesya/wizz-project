@@ -14,6 +14,14 @@ module.exports = {
       timer: {
         type: Sequelize.INTEGER
       },
+      TechnologyId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: { 
+          model: 'Technologies',
+          key: 'id'
+        }
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
