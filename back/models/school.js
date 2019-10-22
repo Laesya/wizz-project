@@ -4,7 +4,7 @@ module.exports = (sequelize, DataTypes) => {
     city: DataTypes.STRING
   }, {});
   School.associate = function(models) {
-    // associations can be defined here
+    School.hasMany(models.Promotion, {as: 'promotions'})
   };
   return School;
 };

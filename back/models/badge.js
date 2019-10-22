@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
     imgUrl: DataTypes.TEXT
   }, {});
   Badge.associate = function(models) {
-    // associations can be defined here
+    Badges.belongsToMany(models.Player, {through: ' playerHasBadges', foreignKey: 'PlayerId', as: 'players'})
   };
   return Badge;
 };
