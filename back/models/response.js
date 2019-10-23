@@ -7,8 +7,8 @@ module.exports = (sequelize, DataTypes) => {
     questionId: DataTypes.INTEGER,
   }, {});
   Response.associate = function(models) {
-    Response.belongsTo(models.Questions, {foreignKey: 'questionId', as: 'Question'})
-    Response.belongsToMany(models.playerHasResponses, {through: 'playerHasResponses', foreignKey: 'responseId', as: 'response'})
+    Response.belongsTo(models.Question, {foreignKey: 'questionId', as: 'Question'})
+    Response.belongsToMany(models.playerHasResponse, {through: 'playerHasResponses', foreignKey: 'responseId', as: 'hasResponse'})
     Response.belongsToMany(models.Player, {through: ' playerHasResponse', foreignKey: 'responseId', as: 'players'})
   };
   return Response;

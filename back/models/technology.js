@@ -4,9 +4,9 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING
   }, {});
   Technologies.associate = function(models) {
-    Technologies.hasMany(models.Promotions, {as: 'promotions'})
-    Technologies.hasMany(models.Questions, {as: 'questions'})
-    Technologies.hasMany(models.Quizzs, {as: 'quizzs'})
+    Technologies.hasMany(models.Promotion, {as: 'promotions'})
+    Technologies.hasMany(models.Question, {as: 'questions'})
+    Technologies.hasMany(models.Quizz, {as: 'quizzs'})
 
 
 

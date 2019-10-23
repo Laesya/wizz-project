@@ -16,11 +16,11 @@ module.exports = (sequelize, DataTypes) => {
     promotionId: DataTypes.INTEGER,
   }, {});
   Player.associate = function(models) {
-    Player.hasMany(models.Comments, {as: 'comments'})
-    Player.belongsTo(models.Promotions, {foreignKey: 'promotionId', as: 'promotion'})
-    Player.belongsToMany(models.Badges, {through: 'playerHasBadges', foreignKey: 'playerId', as: 'badges'})
+    Player.hasMany(models.Comment, {as: 'comments'})
+    Player.belongsTo(models.Promotion, {foreignKey: 'promotionId', as: 'promotion'})
+    Player.belongsToMany(models.Badge, {through: 'playerHasBadges', foreignKey: 'playerId', as: 'badges'})
     Player.belongsToMany(models.Response, {through: ' playerHasResponse', foreignKey: 'playerId', as: 'response'})
-    Player.belongsToMany(models.quizz, {through: 'PlayerHasQuizz', foreignKey: 'playerId', as: 'player'})
+    Player.belongsToMany(models.Quizz, {through: 'PlayerHasQuizz', foreignKey: 'playerId', as: 'player'})
   };
   return Player;
 };

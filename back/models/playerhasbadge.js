@@ -5,8 +5,8 @@ module.exports = (sequelize, DataTypes) => {
     badgeId: DataTypes.INTEGER
   }, {});
   playerHasBadge.associate = function(models) {
-     playerHasBadges.belongsTo(models.Player, {foreignKey: 'playerId'})
-     playerHasBadges.belongsTo(models.Badges, {foreignKey: 'BadgeId'})
+    playerHasBadge.belongsTo(models.Player, {foreignKey: 'playerId'})
+    playerHasBadge.belongsTo(models.Badge, {foreignKey: 'BadgeId'})
   };
   return playerHasBadge;
 };

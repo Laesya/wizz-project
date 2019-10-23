@@ -8,6 +8,7 @@ module.exports = {
         name: "Java test 1",
         livingLanguage: "English",
         creatorId: 1,
+        technologyId:1,
         createdAt: new Date(), 
         updatedAt: new Date()
       },
