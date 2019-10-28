@@ -1,19 +1,17 @@
 const models = require('../models');
-const Quizz = models.Quizz;
+const Question = models.Question;
 
 module.exports = {
     index: function(req,res,next){
-        Quizz.findAll({ 
+        Question.findAll({ 
             include : ['Technology'],
         })
-        .then((quizzs) => {res.json({ quizzs });})
+        .then((questions) => {res.json({ questions });})
         .catch((error) => {res.status(500).json({ error });})
     },
     show: function(req,res,next){
-        Quizz.findByPk(req.params.id, { 
-            include : ['Technology'],
-        })
-        .then((quizz) => {res.json({ quizz });})
+        Question.findByPk(req.params.id, { include : ['Technology']})
+        .then((questions) => {res.json({ questions });})
         .catch((error) => {res.status(500).json( error );})
     },
 }

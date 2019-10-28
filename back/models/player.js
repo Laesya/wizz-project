@@ -1,4 +1,6 @@
 'use strict';
+const bcrypt = require('bcrypt-nodejs');
+
 module.exports = (sequelize, DataTypes) => {
   const Player = sequelize.define('Player', {
     name: DataTypes.STRING,
@@ -14,7 +16,25 @@ module.exports = (sequelize, DataTypes) => {
     isTeacher: DataTypes.BOOLEAN,
     isAdmin: DataTypes.BOOLEAN,
     promotionId: DataTypes.INTEGER,
-  }, {});
+  }, {
+    hooks: {
+      beforeCreate: (user, options) => {
+        return bcrypt.hash(user.password, 10)
+          .then((hash) => user.password = hash)
+          .catch((err) => console.log(err));
+      },
+      beforeUpdate: (user, options) => {
+        return bcrypt.hash(user.password, 10)
+          .then((hash) => user.password = hash)
+          .catch((err) => console.log(err));
+      },
+    },
+    scopes: {
+      withoutPassword: {
+        attributes: { exclude: ['password'] },
+      }
+    }
+  });
   Player.associate = function(models) {
     Player.hasMany(models.Comment, {as: 'comments'})
     Player.belongsTo(models.Promotion, {foreignKey: 'promotionId', as: 'promotion'})
